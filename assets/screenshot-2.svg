@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750">
+  <rect width="1200" height="750" fill="#0f172a"/>
+  <rect x="40" y="40" width="1120" height="70" rx="18" fill="#1e293b"/>
+  <text x="70" y="85" font-size="42">🐍</text>
+  <text x="140" y="70" font-size="28" fill="white" font-family="Tahoma" font-weight="bold">Snake Game Pro</text>
+  <text x="140" y="98" font-size="16" fill="#cbd5e1" font-family="Tahoma">Beautiful graphical snake - Skins &amp; Levels</text>
+  <rect x="60" y="140" width="680" height="550" rx="20" fill="#0b1220" stroke="#1e293b" stroke-width="2"/>
+  <g><rect x="90" y="180" width="180" height="30" rx="8" fill="#22c55e"/><rect x="280" y="180" width="180" height="30" rx="8" fill="#4ade80"/><rect x="470" y="180" width="180" height="30" rx="8" fill="#86efac"/></g>
+  <circle cx="650" cy="300" r="22" fill="#ef4444"/><circle cx="650" cy="300" r="8" fill="#fff" opacity="0.3"/>
+  <circle cx="200" cy="450" r="20" fill="#facc15"/><text x="200" y="458" text-anchor="middle" font-size="22">★</text>
+  <text x="760" y="180" font-size="26" fill="white" font-family="Tahoma">Score: 120</text>
+  <text x="760" y="220" font-size="20" fill="#cbd5e1" font-family="Tahoma">Best: 340 | Level: 2</text>
+  <g><rect x="760" y="260" width="55" height="55" rx="14" fill="#22c55e"/><rect x="830" y="260" width="55" height="55" rx="14" fill="#22d3ee"/><rect x="900" y="260" width="55" height="55" rx="14" fill="#f97316"/><rect x="970" y="260" width="55" height="55" rx="14" fill="#38bdf8"/></g>
+  <text x="760" y="350" font-size="18" fill="white" font-family="Tahoma">Skins: Classic / Neon / Fire / Ice</text>
+  <rect x="760" y="380" width="360" height="60" rx="14" fill="#22c55e"/><text x="940" y="418" text-anchor="middle" font-size="22" fill="white" font-family="Tahoma" font-weight="bold">▶ START GAME</text>
+  <text x="760" y="480" font-size="16" fill="#94a3b8" font-family="Tahoma">Mobile: Swipe + D-Pad | Sound FX | 5 Levels</text>
+</svg>
