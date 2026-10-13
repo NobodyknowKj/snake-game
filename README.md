@@ -4,13 +4,13 @@
 > ساخته شده برای دسکتاپ و موبایل (اندروید) با اسکین‌های متنوع، ۵ مرحله، ۴ درجه سختی و افکت‌های صوتی هیجان‌انگیز.
 
 <p align="center">
-  <img src="assets/screenshot-1.png" width="720" alt="نمای اصلی بازی مار">
+  <img src="assets/screenshot-1.svg" width="720" alt="نمای اصلی بازی مار">
 </p>
 
 <p align="center">
-  <img src="assets/screenshot-2.png" width="720" alt="اسکین‌ها و مراحل">
+  <img src="assets/screenshot-2.svg" width="720" alt="اسکین‌ها و مراحل">
   <br>
-  <img src="assets/screenshot-mobile.png" width="320" alt="نسخه موبایل - اندروید">
+  <img src="assets/screenshot-mobile.svg" width="320" alt="نسخه موبایل - اندروید">
 </p>
 
 ---
@@ -147,9 +147,9 @@ snake-game/
 ├── style.css               # استایل گرافیکی، ریسپانسیو، انیمیشن‌ها
 ├── script.js               # منطق کامل بازی، صدا، اسکین، مرحله، لمس
 ├── assets/
-│   ├── screenshot-1.png    # اسکرین‌شات دسکتاپ
-│   ├── screenshot-2.png    # اسکین‌ها و مراحل
-│   └── screenshot-mobile.png # نسخه موبایل
+│   ├── screenshot-1.svg    # اسکرین‌شات دسکتاپ
+│   ├── screenshot-2.svg    # اسکین‌ها و مراحل
+│   └── screenshot-mobile.svg # نسخه موبایل
 └── README.md               # همین فایل راهنما
 ```
 
