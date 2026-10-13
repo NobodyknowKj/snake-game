@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0f172a">
+<title>بازی مار 🐍 | Snake Game</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+</head>
+<body>
+<div class="bg-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+
+<header class="topbar">
+  <div class="logo">
+    <span class="logo-emoji">🐍</span>
+    <div>
+      <h1>بازی مار <span>پرو</span></h1>
+      <p>نسخه گرافیکی • موبایل و دسکتاپ</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button id="soundBtn" class="icon-btn" title="صدا">🔊</button>
+    <button id="helpBtn" class="icon-btn" title="راهنما">❔</button>
+  </div>
+</header>
+
+<main class="layout">
+  <!-- کنترل‌ها -->
+  <aside class="panel controls">
+    <div class="panel-title">⚙️ تنظیمات بازی</div>
+
+    <label class="field-label">🎨 اسکین مار</label>
+    <div class="skins" id="skins">
+      <button data-skin="classic" class="skin-btn active"><span class="dot dot-classic"></span>کلاسیک سبز</button>
+      <button data-skin="neon" class="skin-btn"><span class="dot dot-neon"></span>نئون</button>
+      <button data-skin="fire" class="skin-btn"><span class="dot dot-fire"></span>آتش 🔥</button>
+      <button data-skin="ice" class="skin-btn"><span class="dot dot-ice"></span>یخ ❄️</button>
+      <button data-skin="rainbow" class="skin-btn"><span class="dot dot-rainbow"></span>رنگین‌کمان 🌈</button>
+      <button data-skin="galaxy" class="skin-btn"><span class="dot dot-galaxy"></span>کهکشان ✨</button>
+    </div>
+
+    <label class="field-label">⚡ درجه سختی</label>
+    <div class="seg" id="difficulty">
+      <button data-diff="easy" class="seg-btn active">آسان</button>
+      <button data-diff="medium" class="seg-btn">متوسط</button>
+      <button data-diff="hard" class="seg-btn">سخت</button>
+      <button data-diff="insane" class="seg-btn">دیوانه 🤯</button>
+    </div>
+    <p class="hint" id="diffHint">سرعت: کند • برخورد به دیوار: عبور از دیوار</p>
+
+    <label class="field-label">🗺️ مرحله</label>
+    <div class="seg" id="levels">
+      <button data-level="1" class="seg-btn active">۱</button>
+      <button data-level="2" class="seg-btn">۲</button>
+      <button data-level="3" class="seg-btn">۳</button>
+      <button data-level="4" class="seg-btn">۴</button>
+      <button data-level="5" class="seg-btn">۵</button>
+    </div>
+    <p class="hint" id="levelHint">مرحله ۱ - چمن آرام • بدون مانع</p>
+
+    <div class="toggles">
+      <label class="switch-row"><span>🔊 افکت صدا</span><input type="checkbox" id="soundToggle" checked><span class="switch"></span></label>
+      <label class="switch-row"><span>🧱 برخورد به دیوار = باخت</span><input type="checkbox" id="wallToggle"><span class="switch"></span></label>
+      <label class="switch-row"><span>✨ ذرات و افکت</span><input type="checkbox" id="fxToggle" checked><span class="switch"></span></label>
+    </div>
+
+    <button id="startBtn" class="btn-primary">▶️ شروع بازی</button>
+    <div class="row-2">
+      <button id="pauseBtn" class="btn-ghost">⏸️ توقف</button>
+      <button id="restartBtn" class="btn-ghost">🔄 شروع دوباره</button>
+    </div>
+  </aside>
+
+  <!-- زمین بازی -->
+  <section class="game-wrap">
+    <div class="scorebar">
+      <div class="score-card"><span>🏆 امتیاز</span><b id="score">0</b></div>
+      <div class="score-card"><span>⭐ بهترین</span><b id="best">0</b></div>
+      <div class="score-card"><span>🍎 خورده</span><b id="eaten">0</b></div>
+      <div class="score-card highlight"><span>🗺️ مرحله</span><b id="levelNow">۱</b></div>
+    </div>
+
+    <div class="progress">
+      <div class="progress-top"><span>پیشرفت تا مرحله بعد</span><span id="progressText">0 / 5</span></div>
+      <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
+    </div>
+
+    <div class="canvas-box" id="canvasBox">
+      <canvas id="game" width="600" height="600"></canvas>
+
+      <div id="overlay" class="overlay">
+        <div class="overlay-card">
+          <div class="big-emoji" id="overlayEmoji">🐍</div>
+          <h2 id="overlayTitle">آماده‌ای؟</h2>
+          <p id="overlayText">با کلیدهای جهت‌دار یا سوایپ حرکت کن. سیب بخور، بزرگ شو، به خودت و موانع نزن!</p>
+          <button id="overlayStart" class="btn-primary">▶️ شروع کن</button>
+          <p class="small">در موبایل: انگشتت رو روی صفحه بکش یا از دکمه‌های زیر استفاده کن</p>
+        </div>
+      </div>
+
+      <div id="bonusTag" class="bonus-tag hidden">🌟 غذای طلایی! +50</div>
+    </div>
+
+    <!-- کنترل لمسی موبایل -->
+    <div class="dpad" id="dpad">
+      <div></div><button data-dir="up" class="dpad-btn">⬆️</button><div></div>
+      <button data-dir="left" class="dpad-btn">⬅️</button><button data-dir="down" class="dpad-btn">⬇️</button><button data-dir="right" class="dpad-btn">➡️</button>
+    </div>
+    <p class="keyboard-hint">⌨️ دسکتاپ: کلیدهای جهت‌دار / WASD • Space = توقف • Enter = شروع</p>
+  </section>
+
+  <aside class="panel info">
+    <div class="panel-title">🏅 جدول و راهنما</div>
+    <div class="leader">
+      <div><span>🥇 بهترین امتیاز</span><b id="best2">0</b></div>
+      <div><span>🎮 تعداد بازی</span><b id="games">0</b></div>
+      <div><span>🍎 کل سیب‌ها</span><b id="totalEaten">0</b></div>
+    </div>
+    <ul class="howto">
+      <li>🍎 سیب قرمز: <b>+10 امتیاز</b></li>
+      <li>🌟 سیب طلایی: <b>+50 امتیاز</b> — فقط 6 ثانیه می‌مونه!</li>
+      <li>🧱 هر 5 سیب = مرحله بعد + سرعت بیشتر</li>
+      <li>💀 برخورد به خودت یا مانع = پایان بازی</li>
+      <li>📱 در موبایل: سوایپ کن یا دکمه‌ها رو بزن</li>
+    </ul>
+    <div class="skin-preview">
+      <div class="preview-title">پیش‌نمایش اسکین فعلی</div>
+      <div class="snake-preview" id="snakePreview"><i></i><i></i><i></i><i></i><i></i></div>
+      <div id="skinName">کلاسیک سبز</div>
+    </div>
+    <a class="gh-link" href="https://github.com/NobodyknowKj/snake-game" target="_blank" rel="noopener">⭐ مشاهده در گیت‌هاب</a>
+  </aside>
+</main>
+
+<footer>ساخته شده با ❤️ با HTML • CSS • JavaScript — بدون نیاز به نصب، فقط فایل index.html رو باز کن</footer>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
